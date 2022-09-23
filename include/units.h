@@ -3387,10 +3387,10 @@ namespace units
 	UNIT_ADD(length, mil, mils, mil, unit<std::ratio<1000>, feet>)
 	UNIT_ADD(length, inch, inches, in, unit<std::ratio<1, 12>, feet>)
 	UNIT_ADD(length, mile,   miles,    mi,    unit<std::ratio<5280>, feet>)
-	UNIT_ADD(length, nauticalMile, nauticalMiles, nmi, unit<std::ratio<1852>, meters>)
-	UNIT_ADD(length, astronicalUnit, astronicalUnits, au, unit<std::ratio<149597870700>, meters>)
-	UNIT_ADD(length, lightyear, lightyears, ly, unit<std::ratio<9460730472580800>, meters>)
-	UNIT_ADD(length, parsec, parsecs, pc, unit<std::ratio<648000>, astronicalUnits, std::ratio<-1>>)
+	UNIT_ADD(length, nautical_mile, nautical_miles, nmi, unit<std::ratio<1852>, meters>)
+	UNIT_ADD(length, astronomical_unit, astronomical_units, au, unit<std::ratio<149597870700>, meters>)
+	UNIT_ADD(length, light_year, light_years, ly, unit<std::ratio<9460730472580800>, meters>)
+	UNIT_ADD(length, parsec, parsecs, pc, unit<std::ratio<648000>, astronomical_units, std::ratio<-1>>)
 	UNIT_ADD(length, angstrom, angstroms, angstrom, unit<std::ratio<1, 10>, nanometers>)
 	UNIT_ADD(length, cubit, cubits, cbt, unit<std::ratio<18>, inches>)
 	UNIT_ADD(length, fathom, fathoms, ftm, unit<std::ratio<6>, feet>)
@@ -3398,7 +3398,7 @@ namespace units
 	UNIT_ADD(length, furlong, furlongs, fur, unit<std::ratio<10>, chains>)
 	UNIT_ADD(length, hand, hands, hand, unit<std::ratio<4>, inches>)
 	UNIT_ADD(length, league, leagues, lea, unit<std::ratio<3>, miles>)
-	UNIT_ADD(length, nauticalLeague, nauticalLeagues, nl, unit<std::ratio<3>, nauticalMiles>)
+	UNIT_ADD(length, nautical_league, nautical_leagues, nl, unit<std::ratio<3>, nautical_miles>)
 	UNIT_ADD(length, yard, yards, yd, unit<std::ratio<3>, feet>)
 
 	UNIT_ADD_CATEGORY_TRAIT(length)
@@ -3612,7 +3612,7 @@ namespace units
 	UNIT_ADD(velocity, feet_per_second, feet_per_second, fps, compound_unit<length::feet, inverse<time::seconds>>)
 	UNIT_ADD(velocity, miles_per_hour, miles_per_hour, mph, compound_unit<length::miles, inverse<time::hour>>)
 	UNIT_ADD(velocity, kilometers_per_hour, kilometers_per_hour, kph, compound_unit<length::kilometers, inverse<time::hour>>)
-	UNIT_ADD(velocity, knot, knots, kts, compound_unit<length::nauticalMiles, inverse<time::hour>>)
+	UNIT_ADD(velocity, knot, knots, kts, compound_unit<length::nautical_miles, inverse<time::hour>>)
 
 	UNIT_ADD_CATEGORY_TRAIT(velocity)
 #endif
@@ -3695,7 +3695,7 @@ namespace units
 #if !defined(DISABLE_PREDEFINED_UNITS) || defined(ENABLE_PREDEFINED_PRESSURE_UNITS)
 	UNIT_ADD_WITH_METRIC_PREFIXES(pressure, pascal, pascals, Pa, unit<std::ratio<1>, units::category::pressure_unit>)
 	UNIT_ADD(pressure, bar, bars, bar, unit<std::ratio<100>, kilo<pascals>>)
-	UNIT_ADD(pressure, mbar, mbars, mbar, unit<std::ratio<1>, milli<bar>>)
+	UNIT_ADD(pressure, millibar, millibars, millibar, unit<std::ratio<1>, milli<bar>>)
 	UNIT_ADD(pressure, atmosphere, atmospheres, atm, unit<std::ratio<101325>, pascals>)
 	UNIT_ADD(pressure, pounds_per_square_inch, pounds_per_square_inch, psi, compound_unit<force::pounds, inverse<squared<length::inch>>>)
 	UNIT_ADD(pressure, torr, torrs, torr, unit<std::ratio<1, 760>, atmospheres>)
@@ -4096,9 +4096,9 @@ namespace units
 	 * @sa			See unit_t for more information on unit type containers.
 	 */
 #if !defined(DISABLE_PREDEFINED_UNITS) || defined(ENABLE_PREDEFINED_CONCENTRATION_UNITS)
-	UNIT_ADD(concentration, ppm, parts_per_million, ppm, unit<std::ratio<1, 1000000>, units::category::scalar_unit>)
-	UNIT_ADD(concentration, ppb, parts_per_billion, ppb, unit<std::ratio<1, 1000>, parts_per_million>)
-	UNIT_ADD(concentration, ppt, parts_per_trillion, ppt, unit<std::ratio<1, 1000>, parts_per_billion>)
+	UNIT_ADD(concentration, parts_per_million, parts_per_million, ppm, unit<std::ratio<1, 1000000>, units::category::scalar_unit>)
+	UNIT_ADD(concentration, parts_per_billion, parts_per_billion, ppb, unit<std::ratio<1, 1000>, parts_per_million>)
+	UNIT_ADD(concentration, parts_per_trillion, parts_per_trillion, ppt, unit<std::ratio<1, 1000>, parts_per_billion>)
 	UNIT_ADD(concentration, percent, percent, pct, unit<std::ratio<1, 100>, units::category::scalar_unit>)
 
 	UNIT_ADD_CATEGORY_TRAIT(concentration)
