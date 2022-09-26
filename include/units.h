@@ -3608,7 +3608,7 @@ namespace units
 	 * @sa			See unit_t for more information on unit type containers.
 	 */
 #if !defined(DISABLE_PREDEFINED_UNITS) || defined(ENABLE_PREDEFINED_VELOCITY_UNITS)
-	UNIT_ADD(velocity, meters_per_second, meters_per_second, mps, unit<std::ratio<1>, units::category::velocity_unit>)
+	UNIT_ADD_WITH_METRIC_PREFIXES(velocity, meters_per_second, meters_per_second, mps, unit<std::ratio<1>, units::category::velocity_unit>)
 	UNIT_ADD(velocity, feet_per_second, feet_per_second, fps, compound_unit<length::feet, inverse<time::seconds>>)
 	UNIT_ADD(velocity, miles_per_hour, miles_per_hour, mph, compound_unit<length::miles, inverse<time::hour>>)
 	UNIT_ADD(velocity, kilometers_per_hour, kilometers_per_hour, kph, compound_unit<length::kilometers, inverse<time::hour>>)
@@ -3651,7 +3651,7 @@ namespace units
 	 * @sa			See unit_t for more information on unit type containers.
 	 */
 #if !defined(DISABLE_PREDEFINED_UNITS) || defined(ENABLE_PREDEFINED_ACCELERATION_UNITS)
-	UNIT_ADD(acceleration, meters_per_second_squared, meters_per_second_squared, mps_sq, unit<std::ratio<1>, units::category::acceleration_unit>)
+	UNIT_ADD_WITH_METRIC_PREFIXES(acceleration, meters_per_second_squared, meters_per_second_squared, mps_sq, unit<std::ratio<1>, units::category::acceleration_unit>)
 	UNIT_ADD(acceleration, feet_per_second_squared, feet_per_second_squared, fps_sq, compound_unit<length::feet, inverse<squared<time::seconds>>>)
 	UNIT_ADD(acceleration, standard_gravity, standard_gravity, SG, unit<std::ratio<980665, 100000>, meters_per_second_squared>)
 
@@ -3987,7 +3987,7 @@ namespace units
 #endif
 
 	//------------------------------
-	//	AREA UNITS
+	//	UNITS OF AREA
 	//------------------------------
 
 	/**
@@ -4000,6 +4000,7 @@ namespace units
 	 */
 #if !defined(DISABLE_PREDEFINED_UNITS) || defined(ENABLE_PREDEFINED_AREA_UNITS)
 	UNIT_ADD(area, square_meter, square_meters, sq_m, unit<std::ratio<1>, units::category::area_unit>)
+	UNIT_ADD(area, square_centimeter, square_centimeters, sq_cm, squared<length::centimeter>)
 	UNIT_ADD(area, square_foot, square_feet, sq_ft, squared<length::feet>)
 	UNIT_ADD(area, square_inch, square_inches, sq_in, squared<length::inch>)
 	UNIT_ADD(area, square_mile, square_miles, sq_mi, squared<length::miles>)
