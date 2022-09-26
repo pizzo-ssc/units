@@ -3571,7 +3571,7 @@ namespace units
 	 */
 #if !defined(DISABLE_PREDEFINED_UNITS) || defined(ENABLE_PREDEFINED_SOLID_ANGLE_UNITS)
 	UNIT_ADD_WITH_METRIC_PREFIXES(solid_angle, steradian, steradians, sr, unit<std::ratio<1>, units::category::solid_angle_unit>)
-	UNIT_ADD(solid_angle, degree_squared, degrees_squared, sq_deg, squared<angle::degrees>)
+	UNIT_ADD(solid_angle, degree_squared, degrees_squared, deg2, squared<angle::degrees>)
 	UNIT_ADD(solid_angle, spat, spats, sp, unit<std::ratio<4>, steradians, std::ratio<1>>)
 
 	UNIT_ADD_CATEGORY_TRAIT(solid_angle)
@@ -3651,8 +3651,8 @@ namespace units
 	 * @sa			See unit_t for more information on unit type containers.
 	 */
 #if !defined(DISABLE_PREDEFINED_UNITS) || defined(ENABLE_PREDEFINED_ACCELERATION_UNITS)
-	UNIT_ADD_WITH_METRIC_PREFIXES(acceleration, meters_per_second_squared, meters_per_second_squared, mps_sq, unit<std::ratio<1>, units::category::acceleration_unit>)
-	UNIT_ADD(acceleration, feet_per_second_squared, feet_per_second_squared, fps_sq, compound_unit<length::feet, inverse<squared<time::seconds>>>)
+	UNIT_ADD_WITH_METRIC_PREFIXES(acceleration, meters_per_second_squared, meters_per_second_squared, mps2, unit<std::ratio<1>, units::category::acceleration_unit>)
+	UNIT_ADD(acceleration, feet_per_second_squared, feet_per_second_squared, ftps2, compound_unit<length::feet, inverse<squared<time::seconds>>>)
 	UNIT_ADD(acceleration, standard_gravity, standard_gravity, SG, unit<std::ratio<980665, 100000>, meters_per_second_squared>)
 
 	UNIT_ADD_CATEGORY_TRAIT(acceleration)
@@ -3695,7 +3695,7 @@ namespace units
 #if !defined(DISABLE_PREDEFINED_UNITS) || defined(ENABLE_PREDEFINED_PRESSURE_UNITS)
 	UNIT_ADD_WITH_METRIC_PREFIXES(pressure, pascal, pascals, Pa, unit<std::ratio<1>, units::category::pressure_unit>)
 	UNIT_ADD(pressure, bar, bars, bar, unit<std::ratio<100>, kilo<pascals>>)
-	UNIT_ADD(pressure, millibar, millibars, millibar, unit<std::ratio<1>, milli<bar>>)
+	UNIT_ADD(pressure, millibar, millibars, mbar, unit<std::ratio<1>, milli<bar>>)
 	UNIT_ADD(pressure, atmosphere, atmospheres, atm, unit<std::ratio<101325>, pascals>)
 	UNIT_ADD(pressure, pounds_per_square_inch, pounds_per_square_inch, psi, compound_unit<force::pounds, inverse<squared<length::inch>>>)
 	UNIT_ADD(pressure, torr, torrs, torr, unit<std::ratio<1, 760>, atmospheres>)
@@ -3933,7 +3933,7 @@ namespace units
 #if !defined(DISABLE_PREDEFINED_UNITS) || defined(ENABLE_PREDEFINED_ILLUMINANCE_UNITS)
 	UNIT_ADD_WITH_METRIC_PREFIXES(illuminance, lux, luxes, lx, unit<std::ratio<1>, units::category::illuminance_unit>)
 	UNIT_ADD(illuminance, footcandle, footcandles, fc, compound_unit<luminous_flux::lumen, inverse<squared<length::foot>>>)
-	UNIT_ADD(illuminance, lumens_per_square_inch, lumens_per_square_inch, lm_per_in_sq, compound_unit<luminous_flux::lumen, inverse<squared<length::inch>>>)
+	UNIT_ADD(illuminance, lumens_per_square_inch, lumens_per_square_inch, lm_per_in2, compound_unit<luminous_flux::lumen, inverse<squared<length::inch>>>)
 	UNIT_ADD(illuminance, phot, phots, ph, compound_unit<luminous_flux::lumens, inverse<squared<length::centimeter>>>)
 
 	UNIT_ADD_CATEGORY_TRAIT(illuminance)
@@ -3999,12 +3999,12 @@ namespace units
 	 * @sa			See unit_t for more information on unit type containers.
 	 */
 #if !defined(DISABLE_PREDEFINED_UNITS) || defined(ENABLE_PREDEFINED_AREA_UNITS)
-	UNIT_ADD(area, square_meter, square_meters, sq_m, unit<std::ratio<1>, units::category::area_unit>)
-	UNIT_ADD(area, square_centimeter, square_centimeters, sq_cm, squared<length::centimeter>)
-	UNIT_ADD(area, square_foot, square_feet, sq_ft, squared<length::feet>)
-	UNIT_ADD(area, square_inch, square_inches, sq_in, squared<length::inch>)
-	UNIT_ADD(area, square_mile, square_miles, sq_mi, squared<length::miles>)
-	UNIT_ADD(area, square_kilometer, square_kilometers, sq_km, squared<length::kilometers>)
+	UNIT_ADD(area, square_meter, square_meters, m2, unit<std::ratio<1>, units::category::area_unit>)
+	UNIT_ADD(area, square_centimeter, square_centimeters, cm2, squared<length::centimeter>)
+	UNIT_ADD(area, square_foot, square_feet, ft2, squared<length::feet>)
+	UNIT_ADD(area, square_inch, square_inches, in2, squared<length::inch>)
+	UNIT_ADD(area, square_mile, square_miles, mi2, squared<length::miles>)
+	UNIT_ADD(area, square_kilometer, square_kilometers, km2, squared<length::kilometers>)
 	UNIT_ADD(area, hectare, hectares, ha, unit<std::ratio<10000>, square_meters>)
 	UNIT_ADD(area, acre, acres, acre, unit<std::ratio<43560>, square_feet>)
 
@@ -4024,14 +4024,14 @@ namespace units
 	 * @sa			See unit_t for more information on unit type containers.
 	 */
 #if !defined(DISABLE_PREDEFINED_UNITS) || defined(ENABLE_PREDEFINED_VOLUME_UNITS)
-	UNIT_ADD(volume, cubic_meter, cubic_meters, cu_m, unit<std::ratio<1>, units::category::volume_unit>)
-	UNIT_ADD(volume, cubic_millimeter, cubic_millimeters, cu_mm, cubed<length::millimeter>)
-	UNIT_ADD(volume, cubic_kilometer, cubic_kilometers, cu_km, cubed<length::kilometer>)
+	UNIT_ADD(volume, cubic_meter, cubic_meters, m3, unit<std::ratio<1>, units::category::volume_unit>)
+	UNIT_ADD(volume, cubic_millimeter, cubic_millimeters, mm3, cubed<length::millimeter>)
+	UNIT_ADD(volume, cubic_kilometer, cubic_kilometers, km3, cubed<length::kilometer>)
 	UNIT_ADD_WITH_METRIC_PREFIXES(volume, liter, liters, L, cubed<deci<length::meter>>)
-	UNIT_ADD(volume, cubic_inch, cubic_inches, cu_in, cubed<length::inches>)
-	UNIT_ADD(volume, cubic_foot, cubic_feet, cu_ft, cubed<length::feet>)
-	UNIT_ADD(volume, cubic_yard, cubic_yards, cu_yd, cubed<length::yards>)
-	UNIT_ADD(volume, cubic_mile, cubic_miles, cu_mi, cubed<length::miles>)
+	UNIT_ADD(volume, cubic_inch, cubic_inches, in3, cubed<length::inches>)
+	UNIT_ADD(volume, cubic_foot, cubic_feet, ft3, cubed<length::feet>)
+	UNIT_ADD(volume, cubic_yard, cubic_yards, yd3, cubed<length::yards>)
+	UNIT_ADD(volume, cubic_mile, cubic_miles, mi3, cubed<length::miles>)
 	UNIT_ADD(volume, gallon, gallons, gal, unit<std::ratio<231>, cubic_inches>)
 	UNIT_ADD(volume, quart, quarts, qt, unit<std::ratio<1, 4>, gallons>)
 	UNIT_ADD(volume, pint, pints, pt, unit<std::ratio<1, 2>, quarts>)
@@ -4040,7 +4040,7 @@ namespace units
 	UNIT_ADD(volume, barrel, barrels, bl, unit<std::ratio<42>, gallons>)
 	UNIT_ADD(volume, bushel, bushels, bu, unit<std::ratio<215042, 100>, cubic_inches>)
 	UNIT_ADD(volume, cord, cords, cord, unit<std::ratio<128>, cubic_feet>)
-	UNIT_ADD(volume, cubic_fathom, cubic_fathoms, cu_fm, cubed<length::fathom>)
+	UNIT_ADD(volume, cubic_fathom, cubic_fathoms, fm3, cubed<length::fathom>)
 	UNIT_ADD(volume, tablespoon, tablespoons, tbsp, unit<std::ratio<1, 2>, fluid_ounces>)
 	UNIT_ADD(volume, teaspoon, teaspoons, tsp, unit<std::ratio<1, 6>, fluid_ounces>)
 	UNIT_ADD(volume, pinch, pinches, pinch, unit<std::ratio<1, 8>, teaspoons>)
@@ -4070,16 +4070,16 @@ namespace units
 	 * @sa			See unit_t for more information on unit type containers.
 	 */
 #if !defined(DISABLE_PREDEFINED_UNITS) || defined(ENABLE_PREDEFINED_DENSITY_UNITS)
-	UNIT_ADD(density, kilograms_per_cubic_meter, kilograms_per_cubic_meter, kg_per_cu_m, unit<std::ratio<1>, units::category::density_unit>)
+	UNIT_ADD(density, kilograms_per_cubic_meter, kilograms_per_cubic_meter, kg_per_m3, unit<std::ratio<1>, units::category::density_unit>)
 	UNIT_ADD(density, grams_per_milliliter, grams_per_milliliter, g_per_mL, compound_unit<mass::grams, inverse<volume::milliliter>>)
 	UNIT_ADD(density, kilograms_per_liter, kilograms_per_liter, kg_per_L, unit<std::ratio<1>, compound_unit<mass::grams, inverse<volume::milliliter>>>)
-	UNIT_ADD(density, ounces_per_cubic_foot, ounces_per_cubic_foot, oz_per_cu_ft, compound_unit<mass::ounces, inverse<volume::cubic_foot>>)
-	UNIT_ADD(density, ounces_per_cubic_inch, ounces_per_cubic_inch, oz_per_cu_in, compound_unit<mass::ounces, inverse<volume::cubic_inch>>)
+	UNIT_ADD(density, ounces_per_cubic_foot, ounces_per_cubic_foot, oz_per_ft3, compound_unit<mass::ounces, inverse<volume::cubic_foot>>)
+	UNIT_ADD(density, ounces_per_cubic_inch, ounces_per_cubic_inch, oz_per_in3, compound_unit<mass::ounces, inverse<volume::cubic_inch>>)
 	UNIT_ADD(density, ounces_per_gallon, ounces_per_gallon, oz_per_gal, compound_unit<mass::ounces, inverse<volume::gallon>>)
-	UNIT_ADD(density, pounds_per_cubic_foot, pounds_per_cubic_foot, lb_per_cu_ft, compound_unit<mass::pounds, inverse<volume::cubic_foot>>)
-	UNIT_ADD(density, pounds_per_cubic_inch, pounds_per_cubic_inch, lb_per_cu_in, compound_unit<mass::pounds, inverse<volume::cubic_inch>>)
+	UNIT_ADD(density, pounds_per_cubic_foot, pounds_per_cubic_foot, lb_per_ft3, compound_unit<mass::pounds, inverse<volume::cubic_foot>>)
+	UNIT_ADD(density, pounds_per_cubic_inch, pounds_per_cubic_inch, lb_per_in3, compound_unit<mass::pounds, inverse<volume::cubic_inch>>)
 	UNIT_ADD(density, pounds_per_gallon, pounds_per_gallon, lb_per_gal, compound_unit<mass::pounds, inverse<volume::gallon>>)
-	UNIT_ADD(density, slugs_per_cubic_foot, slugs_per_cubic_foot, slug_per_cu_ft, compound_unit<mass::slugs, inverse<volume::cubic_foot>>)
+	UNIT_ADD(density, slugs_per_cubic_foot, slugs_per_cubic_foot, slug_per_ft3, compound_unit<mass::slugs, inverse<volume::cubic_foot>>)
 
 	UNIT_ADD_CATEGORY_TRAIT(density)
 #endif
