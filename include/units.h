@@ -803,6 +803,8 @@ namespace units
 		typedef base_unit<detail::meter_ratio<2>>																																		area_unit;						///< Represents an SI derived unit of area
 		typedef base_unit<detail::meter_ratio<3>>																																		volume_unit;					///< Represents an SI derived unit of volume
 		typedef base_unit<detail::meter_ratio<-3>,	std::ratio<1>>																														density_unit;					///< Represents an SI derived unit of density
+		typedef base_unit<detail::meter_ratio<3>,	std::ratio<0>,	std::ratio<-1>>																										volumetric_flow_rate_unit; 		///< Represents an SI derived unit of volumetric flow rate
+  		typedef base_unit<detail::meter_ratio<0>,	std::ratio<1>,	std::ratio<-1>>																										mass_flow_rate_unit; 			///< Represents an SI derived unit of volumetric flow rate
 		typedef base_unit<>																																						concentration_unit;				///< Represents a unit of concentration
 		typedef base_unit<detail::meter_ratio<0>,	std::ratio<0>,	std::ratio<0>,	std::ratio<0>,	std::ratio<0>,	std::ratio<0>,	std::ratio<0>,	std::ratio<0>,	std::ratio<1>>		data_unit;						///< Represents a unit of data size
 		typedef base_unit<detail::meter_ratio<0>,	std::ratio<0>,	std::ratio<-1>,	std::ratio<0>,	std::ratio<0>,	std::ratio<0>,	std::ratio<0>,	std::ratio<0>,	std::ratio<1>>		data_transfer_rate_unit;		///< Represents a unit of data transfer rate
@@ -1902,6 +1904,8 @@ namespace units
 	 *				- \ref areaContainers "area unit containers"
 	 *				- \ref volumeContainers "volume unit containers"
 	 *				- \ref densityContainers "density unit containers"
+	 *				- \ref volumetricFlowRateContainers "volumetric flow rate unit containers"
+	 *				- \ref massFlowRateContainers "mass flow rate unit containers"
 	 *				- \ref concentrationContainers "concentration unit containers"
 	 *				- \ref constantContainers "constant unit containers"
 	 */
@@ -4082,6 +4086,54 @@ namespace units
 	UNIT_ADD(density, slugs_per_cubic_foot, slugs_per_cubic_foot, slug_per_ft3, compound_unit<mass::slugs, inverse<volume::cubic_foot>>)
 
 	UNIT_ADD_CATEGORY_TRAIT(density)
+#endif
+
+	//------------------------------
+	//	UNITS OF VOLUMETRIC FLOW RATE
+	//------------------------------
+
+	/**
+	 * @namespace	units::volumetric_flow_rate
+	 * @brief		namespace for unit types and containers representing volumetric flow rate values
+	 * @details		The SI unit for volumetric flow rate is `cubic_meters_per_second`, and the corresponding `base_unit` category is
+	 *				`volumetric_flow_rate_unit`.
+	 * @anchor		volumetricFlowRateContainers
+	 * @sa			See unit_t for more information on unit type containers.
+	 */
+#if !defined(DISABLE_PREDEFINED_UNITS) || defined(ENABLE_PREDEFINED_VOLUMETRIC_FLOW_RATE_UNITS)
+	UNIT_ADD(volumetric_flow_rate, cubic_meters_per_second, cubic_meters_per_second, m3_per_s, unit<std::ratio<1>, units::category::volumetric_flow_rate_unit>)
+	UNIT_ADD(volumetric_flow_rate, cubic_meters_per_minute, cubic_meters_per_minute, m3_per_min, compound_unit<volume::cubic_meters, inverse<time::minutes>>)
+	UNIT_ADD(volumetric_flow_rate, cubic_meters_per_hour, cubic_meters_per_hour, m3_per_h, compound_unit<volume::cubic_meters, inverse<time::hours>>)
+	UNIT_ADD(volumetric_flow_rate, liters_per_second, liters_per_second, l_per_s, compound_unit<volume::liters, inverse<time::seconds>>)
+	UNIT_ADD(volumetric_flow_rate, liters_per_minute, liters_per_minute, l_per_min, compound_unit<volume::liters, inverse<time::minutes>>)
+	UNIT_ADD(volumetric_flow_rate, liters_per_hour, liters_per_hour, l_per_h, compound_unit<volume::liters, inverse<time::hours>>)
+	UNIT_ADD(volumetric_flow_rate, milliliters_per_second, milliliters_per_second, ml_per_s, compound_unit<volume::milliliters, inverse<time::seconds>>)
+	UNIT_ADD(volumetric_flow_rate, milliliters_per_minute, milliliters_per_minute, ml_per_min, compound_unit<volume::milliliters, inverse<time::minutes>>)
+
+	UNIT_ADD_CATEGORY_TRAIT(volumetric_flow_rate)
+#endif
+
+	//------------------------------
+	//	UNITS OF MASS FLOW RATE
+	//------------------------------
+
+	/**
+	 * @namespace	units::mass_flow_rate
+	 * @brief		namespace for unit types and containers representing mass flow rate values
+	 * @details		The SI unit for mass flow rate is `cubic_meters_per_second`, and the corresponding `base_unit` category is
+	 *				`mass_flow_rate_unit`.
+	 * @anchor		massFlowRateContainers
+	 * @sa			See unit_t for more information on unit type containers.
+	 */
+#if !defined(DISABLE_PREDEFINED_UNITS) || defined(ENABLE_PREDEFINED_MASS_FLOW_RATE_UNITS)
+	UNIT_ADD(mass_flow_rate, kilograms_per_second, kilograms_per_second, kg_per_s, unit<std::ratio<1>, units::category::mass_flow_rate_unit>)
+	UNIT_ADD(mass_flow_rate, kilograms_per_minute, kilograms_per_minute, kg_per_min, compound_unit<mass::kilogram, inverse<time::minutes>>)
+	UNIT_ADD(mass_flow_rate, kilograms_per_hour, kilograms_per_hour, kg_per_h, compound_unit<mass::kilogram, inverse<time::hours>>)
+	UNIT_ADD(mass_flow_rate, grams_per_second, grams_per_second, g_per_s, compound_unit<mass::grams, inverse<time::seconds>>)
+	UNIT_ADD(mass_flow_rate, grams_per_minute, grams_per_minute, g_per_min, compound_unit<mass::grams, inverse<time::minutes>>)
+	UNIT_ADD(mass_flow_rate, grams_per_hour, grams_per_hour, g_per_h, compound_unit<mass::grams, inverse<time::hours>>)
+
+	UNIT_ADD_CATEGORY_TRAIT(mass_flow_rate)
 #endif
 
 	//------------------------------
