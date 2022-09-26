@@ -3447,7 +3447,7 @@ namespace units
 	 * @sa			See unit_t for more information on unit type containers.
 	 */
 #if !defined(DISABLE_PREDEFINED_UNITS) || defined(ENABLE_PREDEFINED_TIME_UNITS)
-	UNIT_ADD_WITH_METRIC_PREFIXES(time, second, seconds, s, unit<std::ratio<1>, units::category::time_unit>)
+	UNIT_ADD_WITH_METRIC_PREFIXES(time, second, seconds, sec, unit<std::ratio<1>, units::category::time_unit>)
 	UNIT_ADD(time, minute, minutes, min, unit<std::ratio<60>, seconds>)
 	UNIT_ADD(time, hour, hours, hr, unit<std::ratio<60>, minutes>)
 	UNIT_ADD(time, day, days, d, unit<std::ratio<24>, hours>)
@@ -3516,7 +3516,7 @@ namespace units
 	 * @sa			See unit_t for more information on unit type containers.
 	 */
 #if !defined(DISABLE_PREDEFINED_UNITS) || defined(ENABLE_PREDEFINED_TEMPERATURE_UNITS)
-	UNIT_ADD(temperature, kelvin, kelvin, K, unit<std::ratio<1>, units::category::temperature_unit>)
+	UNIT_ADD(temperature, kelvin, kelvin, degK, unit<std::ratio<1>, units::category::temperature_unit>)
 	UNIT_ADD(temperature, celsius, celsius, degC, unit<std::ratio<1>, kelvin, std::ratio<0>, std::ratio<27315, 100>>)
 	UNIT_ADD(temperature, fahrenheit, fahrenheit, degF, unit<std::ratio<5, 9>, celsius, std::ratio<0>, std::ratio<-160, 9>>)
 	UNIT_ADD(temperature, reaumur, reaumur, Re, unit<std::ratio<10, 8>, celsius>)
@@ -3612,10 +3612,10 @@ namespace units
 	 * @sa			See unit_t for more information on unit type containers.
 	 */
 #if !defined(DISABLE_PREDEFINED_UNITS) || defined(ENABLE_PREDEFINED_VELOCITY_UNITS)
-	UNIT_ADD_WITH_METRIC_PREFIXES(velocity, meters_per_second, meters_per_second, mps, unit<std::ratio<1>, units::category::velocity_unit>)
-	UNIT_ADD(velocity, feet_per_second, feet_per_second, fps, compound_unit<length::feet, inverse<time::seconds>>)
-	UNIT_ADD(velocity, miles_per_hour, miles_per_hour, mph, compound_unit<length::miles, inverse<time::hour>>)
-	UNIT_ADD(velocity, kilometers_per_hour, kilometers_per_hour, kph, compound_unit<length::kilometers, inverse<time::hour>>)
+	UNIT_ADD_WITH_METRIC_PREFIXES(velocity, meters_per_second, meters_per_second, m_sec, unit<std::ratio<1>, units::category::velocity_unit>)
+	UNIT_ADD(velocity, feet_per_second, feet_per_second, f_sec, compound_unit<length::feet, inverse<time::seconds>>)
+	UNIT_ADD(velocity, miles_per_hour, miles_per_hour, mi_hr, compound_unit<length::miles, inverse<time::hour>>)
+	UNIT_ADD(velocity, kilometers_per_hour, kilometers_per_hour, km_hr, compound_unit<length::kilometers, inverse<time::hour>>)
 	UNIT_ADD(velocity, knot, knots, kts, compound_unit<length::nautical_miles, inverse<time::hour>>)
 
 	UNIT_ADD_CATEGORY_TRAIT(velocity)
@@ -3634,10 +3634,10 @@ namespace units
 	 * @sa			See unit_t for more information on unit type containers.
 	 */
 #if !defined(DISABLE_PREDEFINED_UNITS) || defined(ENABLE_PREDEFINED_ANGULAR_VELOCITY_UNITS)
-	UNIT_ADD(angular_velocity, radians_per_second, radians_per_second, rad_per_s, unit<std::ratio<1>, units::category::angular_velocity_unit>)
-	UNIT_ADD(angular_velocity, degrees_per_second, degrees_per_second, deg_per_s, compound_unit<angle::degrees, inverse<time::seconds>>)
+	UNIT_ADD(angular_velocity, radians_per_second, radians_per_second, rad_sec, unit<std::ratio<1>, units::category::angular_velocity_unit>)
+	UNIT_ADD(angular_velocity, degrees_per_second, degrees_per_second, deg_sec, compound_unit<angle::degrees, inverse<time::seconds>>)
 	UNIT_ADD(angular_velocity, revolutions_per_minute, revolutions_per_minute, rpm, unit<std::ratio<2, 60>, radians_per_second, std::ratio<1>>)
-	UNIT_ADD(angular_velocity, milliarcseconds_per_year, milliarcseconds_per_year, mas_per_yr, compound_unit<angle::milliarcseconds, inverse<time::year>>)
+	UNIT_ADD(angular_velocity, milliarcseconds_per_year, milliarcseconds_per_year, mas_yr, compound_unit<angle::milliarcseconds, inverse<time::year>>)
 
 	UNIT_ADD_CATEGORY_TRAIT(angular_velocity)
 #endif
@@ -3655,8 +3655,8 @@ namespace units
 	 * @sa			See unit_t for more information on unit type containers.
 	 */
 #if !defined(DISABLE_PREDEFINED_UNITS) || defined(ENABLE_PREDEFINED_ACCELERATION_UNITS)
-	UNIT_ADD_WITH_METRIC_PREFIXES(acceleration, meters_per_second_squared, meters_per_second_squared, mps2, unit<std::ratio<1>, units::category::acceleration_unit>)
-	UNIT_ADD(acceleration, feet_per_second_squared, feet_per_second_squared, ftps2, compound_unit<length::feet, inverse<squared<time::seconds>>>)
+	UNIT_ADD_WITH_METRIC_PREFIXES(acceleration, meters_per_second_squared, meters_per_second_squared, m_sec2, unit<std::ratio<1>, units::category::acceleration_unit>)
+	UNIT_ADD(acceleration, feet_per_second_squared, feet_per_second_squared, ft_sec2, compound_unit<length::feet, inverse<squared<time::seconds>>>)
 	UNIT_ADD(acceleration, standard_gravity, standard_gravity, SG, unit<std::ratio<980665, 100000>, meters_per_second_squared>)
 
 	UNIT_ADD_CATEGORY_TRAIT(acceleration)
@@ -3937,7 +3937,7 @@ namespace units
 #if !defined(DISABLE_PREDEFINED_UNITS) || defined(ENABLE_PREDEFINED_ILLUMINANCE_UNITS)
 	UNIT_ADD_WITH_METRIC_PREFIXES(illuminance, lux, luxes, lx, unit<std::ratio<1>, units::category::illuminance_unit>)
 	UNIT_ADD(illuminance, footcandle, footcandles, fc, compound_unit<luminous_flux::lumen, inverse<squared<length::foot>>>)
-	UNIT_ADD(illuminance, lumens_per_square_inch, lumens_per_square_inch, lm_per_in2, compound_unit<luminous_flux::lumen, inverse<squared<length::inch>>>)
+	UNIT_ADD(illuminance, lumens_per_square_inch, lumens_per_square_inch, lm_in2, compound_unit<luminous_flux::lumen, inverse<squared<length::inch>>>)
 	UNIT_ADD(illuminance, phot, phots, ph, compound_unit<luminous_flux::lumens, inverse<squared<length::centimeter>>>)
 
 	UNIT_ADD_CATEGORY_TRAIT(illuminance)
@@ -4074,16 +4074,16 @@ namespace units
 	 * @sa			See unit_t for more information on unit type containers.
 	 */
 #if !defined(DISABLE_PREDEFINED_UNITS) || defined(ENABLE_PREDEFINED_DENSITY_UNITS)
-	UNIT_ADD(density, kilograms_per_cubic_meter, kilograms_per_cubic_meter, kg_per_m3, unit<std::ratio<1>, units::category::density_unit>)
-	UNIT_ADD(density, grams_per_milliliter, grams_per_milliliter, g_per_mL, compound_unit<mass::grams, inverse<volume::milliliter>>)
-	UNIT_ADD(density, kilograms_per_liter, kilograms_per_liter, kg_per_L, unit<std::ratio<1>, compound_unit<mass::grams, inverse<volume::milliliter>>>)
-	UNIT_ADD(density, ounces_per_cubic_foot, ounces_per_cubic_foot, oz_per_ft3, compound_unit<mass::ounces, inverse<volume::cubic_foot>>)
-	UNIT_ADD(density, ounces_per_cubic_inch, ounces_per_cubic_inch, oz_per_in3, compound_unit<mass::ounces, inverse<volume::cubic_inch>>)
-	UNIT_ADD(density, ounces_per_gallon, ounces_per_gallon, oz_per_gal, compound_unit<mass::ounces, inverse<volume::gallon>>)
-	UNIT_ADD(density, pounds_per_cubic_foot, pounds_per_cubic_foot, lb_per_ft3, compound_unit<mass::pounds, inverse<volume::cubic_foot>>)
-	UNIT_ADD(density, pounds_per_cubic_inch, pounds_per_cubic_inch, lb_per_in3, compound_unit<mass::pounds, inverse<volume::cubic_inch>>)
-	UNIT_ADD(density, pounds_per_gallon, pounds_per_gallon, lb_per_gal, compound_unit<mass::pounds, inverse<volume::gallon>>)
-	UNIT_ADD(density, slugs_per_cubic_foot, slugs_per_cubic_foot, slug_per_ft3, compound_unit<mass::slugs, inverse<volume::cubic_foot>>)
+	UNIT_ADD(density, kilograms_per_cubic_meter, kilograms_per_cubic_meter, kg_m3, unit<std::ratio<1>, units::category::density_unit>)
+	UNIT_ADD(density, grams_per_milliliter, grams_per_milliliter, g_ml, compound_unit<mass::grams, inverse<volume::milliliter>>)
+	UNIT_ADD(density, kilograms_per_liter, kilograms_per_liter, kg_l, unit<std::ratio<1>, compound_unit<mass::grams, inverse<volume::milliliter>>>)
+	UNIT_ADD(density, ounces_per_cubic_foot, ounces_per_cubic_foot, oz_ft3, compound_unit<mass::ounces, inverse<volume::cubic_foot>>)
+	UNIT_ADD(density, ounces_per_cubic_inch, ounces_per_cubic_inch, oz_in3, compound_unit<mass::ounces, inverse<volume::cubic_inch>>)
+	UNIT_ADD(density, ounces_per_gallon, ounces_per_gallon, oz_gal, compound_unit<mass::ounces, inverse<volume::gallon>>)
+	UNIT_ADD(density, pounds_per_cubic_foot, pounds_per_cubic_foot, lb_ft3, compound_unit<mass::pounds, inverse<volume::cubic_foot>>)
+	UNIT_ADD(density, pounds_per_cubic_inch, pounds_per_cubic_inch, lb_in3, compound_unit<mass::pounds, inverse<volume::cubic_inch>>)
+	UNIT_ADD(density, pounds_per_gallon, pounds_per_gallon, lb_gal, compound_unit<mass::pounds, inverse<volume::gallon>>)
+	UNIT_ADD(density, slugs_per_cubic_foot, slugs_per_cubic_foot, slug_ft3, compound_unit<mass::slugs, inverse<volume::cubic_foot>>)
 
 	UNIT_ADD_CATEGORY_TRAIT(density)
 #endif
@@ -4101,14 +4101,14 @@ namespace units
 	 * @sa			See unit_t for more information on unit type containers.
 	 */
 #if !defined(DISABLE_PREDEFINED_UNITS) || defined(ENABLE_PREDEFINED_VOLUMETRIC_FLOW_RATE_UNITS)
-	UNIT_ADD(volumetric_flow_rate, cubic_meters_per_second, cubic_meters_per_second, m3_per_s, unit<std::ratio<1>, units::category::volumetric_flow_rate_unit>)
-	UNIT_ADD(volumetric_flow_rate, cubic_meters_per_minute, cubic_meters_per_minute, m3_per_min, compound_unit<volume::cubic_meters, inverse<time::minutes>>)
-	UNIT_ADD(volumetric_flow_rate, cubic_meters_per_hour, cubic_meters_per_hour, m3_per_h, compound_unit<volume::cubic_meters, inverse<time::hours>>)
-	UNIT_ADD(volumetric_flow_rate, liters_per_second, liters_per_second, l_per_s, compound_unit<volume::liters, inverse<time::seconds>>)
-	UNIT_ADD(volumetric_flow_rate, liters_per_minute, liters_per_minute, l_per_min, compound_unit<volume::liters, inverse<time::minutes>>)
-	UNIT_ADD(volumetric_flow_rate, liters_per_hour, liters_per_hour, l_per_h, compound_unit<volume::liters, inverse<time::hours>>)
-	UNIT_ADD(volumetric_flow_rate, milliliters_per_second, milliliters_per_second, ml_per_s, compound_unit<volume::milliliters, inverse<time::seconds>>)
-	UNIT_ADD(volumetric_flow_rate, milliliters_per_minute, milliliters_per_minute, ml_per_min, compound_unit<volume::milliliters, inverse<time::minutes>>)
+	UNIT_ADD(volumetric_flow_rate, cubic_meters_per_second, cubic_meters_per_second, m3_sec, unit<std::ratio<1>, units::category::volumetric_flow_rate_unit>)
+	UNIT_ADD(volumetric_flow_rate, cubic_meters_per_minute, cubic_meters_per_minute, m3_min, compound_unit<volume::cubic_meters, inverse<time::minutes>>)
+	UNIT_ADD(volumetric_flow_rate, cubic_meters_per_hour, cubic_meters_per_hour, m3_hr, compound_unit<volume::cubic_meters, inverse<time::hours>>)
+	UNIT_ADD(volumetric_flow_rate, liters_per_second, liters_per_second, l_sec, compound_unit<volume::liters, inverse<time::seconds>>)
+	UNIT_ADD(volumetric_flow_rate, liters_per_minute, liters_per_minute, l_min, compound_unit<volume::liters, inverse<time::minutes>>)
+	UNIT_ADD(volumetric_flow_rate, liters_per_hour, liters_per_hour, l_hr, compound_unit<volume::liters, inverse<time::hours>>)
+	UNIT_ADD(volumetric_flow_rate, milliliters_per_second, milliliters_per_second, ml_sec, compound_unit<volume::milliliters, inverse<time::seconds>>)
+	UNIT_ADD(volumetric_flow_rate, milliliters_per_minute, milliliters_per_minute, ml_min, compound_unit<volume::milliliters, inverse<time::minutes>>)
 
 	UNIT_ADD_CATEGORY_TRAIT(volumetric_flow_rate)
 #endif
@@ -4126,12 +4126,12 @@ namespace units
 	 * @sa			See unit_t for more information on unit type containers.
 	 */
 #if !defined(DISABLE_PREDEFINED_UNITS) || defined(ENABLE_PREDEFINED_MASS_FLOW_RATE_UNITS)
-	UNIT_ADD(mass_flow_rate, kilograms_per_second, kilograms_per_second, kg_per_s, unit<std::ratio<1>, units::category::mass_flow_rate_unit>)
-	UNIT_ADD(mass_flow_rate, kilograms_per_minute, kilograms_per_minute, kg_per_min, compound_unit<mass::kilogram, inverse<time::minutes>>)
-	UNIT_ADD(mass_flow_rate, kilograms_per_hour, kilograms_per_hour, kg_per_h, compound_unit<mass::kilogram, inverse<time::hours>>)
-	UNIT_ADD(mass_flow_rate, grams_per_second, grams_per_second, g_per_s, compound_unit<mass::grams, inverse<time::seconds>>)
-	UNIT_ADD(mass_flow_rate, grams_per_minute, grams_per_minute, g_per_min, compound_unit<mass::grams, inverse<time::minutes>>)
-	UNIT_ADD(mass_flow_rate, grams_per_hour, grams_per_hour, g_per_h, compound_unit<mass::grams, inverse<time::hours>>)
+	UNIT_ADD(mass_flow_rate, kilograms_per_second, kilograms_per_second, kg_sec, unit<std::ratio<1>, units::category::mass_flow_rate_unit>)
+	UNIT_ADD(mass_flow_rate, kilograms_per_minute, kilograms_per_minute, kg_min, compound_unit<mass::kilogram, inverse<time::minutes>>)
+	UNIT_ADD(mass_flow_rate, kilograms_per_hour, kilograms_per_hour, kg_hr, compound_unit<mass::kilogram, inverse<time::hours>>)
+	UNIT_ADD(mass_flow_rate, grams_per_second, grams_per_second, g_sec, compound_unit<mass::grams, inverse<time::seconds>>)
+	UNIT_ADD(mass_flow_rate, grams_per_minute, grams_per_minute, g_min, compound_unit<mass::grams, inverse<time::minutes>>)
+	UNIT_ADD(mass_flow_rate, grams_per_hour, grams_per_hour, g_hr, compound_unit<mass::grams, inverse<time::hours>>)
 
 	UNIT_ADD_CATEGORY_TRAIT(mass_flow_rate)
 #endif
@@ -4191,7 +4191,7 @@ namespace units
 	* @sa			See unit_t for more information on unit type containers.
 	*/
 #if !defined(DISABLE_PREDEFINED_UNITS) || defined(ENABLE_PREDEFINED_DATA_TRANSFER_RATE_UNITS)
-	UNIT_ADD_WITH_METRIC_AND_BINARY_PREFIXES(data_transfer_rate, bytes_per_second, bytes_per_second, Bps, unit<std::ratio<1>, units::category::data_transfer_rate_unit>)
+	UNIT_ADD_WITH_METRIC_AND_BINARY_PREFIXES(data_transfer_rate, bytes_per_second, bytes_per_second, B_s, unit<std::ratio<1>, units::category::data_transfer_rate_unit>)
 	UNIT_ADD(data_transfer_rate, exabytes_per_second, exabytes_per_second, EBps, unit<std::ratio<1000>, petabytes_per_second>)
 	UNIT_ADD_WITH_METRIC_AND_BINARY_PREFIXES(data_transfer_rate, bits_per_second, bits_per_second, bps, unit<std::ratio<1, 8>, bytes_per_second>)
 	UNIT_ADD(data_transfer_rate, exabits_per_second, exabits_per_second, Ebps, unit<std::ratio<1000>, petabits_per_second>)
