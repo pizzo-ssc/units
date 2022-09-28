@@ -364,68 +364,6 @@ template<> inline constexpr const char* abbreviation(const namespaceName::nameSi
 	/** @tparam		T	one or more types to test*/\
 	UNIT_ADD_IS_UNIT_CATEGORY_TRAIT(unitCategory)
 
-/**
- * @def			UNIT_ADD_WITH_METRIC_PREFIXES(nameSingular, namePlural, abbreviation, definition)
- * @brief		Macro for generating the boiler-plate code needed for a new unit, including its metric
- *				prefixes from femto to peta.
- * @details		See UNIT_ADD. In addition to generating the unit definition and containers '(e.g. `meters` and 'meter_t',
- *				it also creates corresponding units with metric suffixes such as `millimeters`, and `millimeter_t`), as well as the
- *				literal suffixes (e.g. `10.0_mm`).
- * @param		namespaceName namespace in which the new units will be encapsulated. All literal values
- *				are placed in the `units::literals` namespace.
- * @param		nameSingular singular version of the unit name, e.g. 'meter'
- * @param		namePlural - plural version of the unit name, e.g. 'meters'
- * @param		abbreviation - abbreviated unit name, e.g. 'm'
- * @param		definition - the variadic parameter is used for the definition of the unit
- *				(e.g. `unit<std::ratio<1>, units::category::length_unit>`)
- * @note		a variadic template is used for the definition to allow templates with
- *				commas to be easily expanded. All the variadic 'arguments' should together
- *				comprise the unit definition.
- */
-#define UNIT_ADD_WITH_METRIC_PREFIXES(namespaceName, nameSingular, namePlural, abbreviation, /*definition*/...)\
-	UNIT_ADD(namespaceName, nameSingular, namePlural, abbreviation, __VA_ARGS__)\
-	UNIT_ADD(namespaceName, femto ## nameSingular, femto ## namePlural, f ## abbreviation, femto<namePlural>)\
-	UNIT_ADD(namespaceName, pico ## nameSingular, pico ## namePlural, p ## abbreviation, pico<namePlural>)\
-	UNIT_ADD(namespaceName, nano ## nameSingular, nano ## namePlural, n ## abbreviation, nano<namePlural>)\
-	UNIT_ADD(namespaceName, micro ## nameSingular, micro ## namePlural, u ## abbreviation, micro<namePlural>)\
-	UNIT_ADD(namespaceName, milli ## nameSingular, milli ## namePlural, m ## abbreviation, milli<namePlural>)\
-	UNIT_ADD(namespaceName, centi ## nameSingular, centi ## namePlural, c ## abbreviation, centi<namePlural>)\
-	UNIT_ADD(namespaceName, deci ## nameSingular, deci ## namePlural, d ## abbreviation, deci<namePlural>)\
-	UNIT_ADD(namespaceName, deca ## nameSingular, deca ## namePlural, da ## abbreviation, deca<namePlural>)\
-	UNIT_ADD(namespaceName, hecto ## nameSingular, hecto ## namePlural, h ## abbreviation, hecto<namePlural>)\
-	UNIT_ADD(namespaceName, kilo ## nameSingular, kilo ## namePlural, k ## abbreviation, kilo<namePlural>)\
-	UNIT_ADD(namespaceName, mega ## nameSingular, mega ## namePlural, M ## abbreviation, mega<namePlural>)\
-	UNIT_ADD(namespaceName, giga ## nameSingular, giga ## namePlural, G ## abbreviation, giga<namePlural>)\
-	UNIT_ADD(namespaceName, tera ## nameSingular, tera ## namePlural, T ## abbreviation, tera<namePlural>)\
-	UNIT_ADD(namespaceName, peta ## nameSingular, peta ## namePlural, P ## abbreviation, peta<namePlural>)\
-
- /**
-  * @def		UNIT_ADD_WITH_METRIC_AND_BINARY_PREFIXES(nameSingular, namePlural, abbreviation, definition)
-  * @brief		Macro for generating the boiler-plate code needed for a new unit, including its metric
-  *				prefixes from femto to peta, and binary prefixes from kibi to exbi.
-  * @details	See UNIT_ADD. In addition to generating the unit definition and containers '(e.g. `bytes` and 'byte_t',
-  *				it also creates corresponding units with metric suffixes such as `millimeters`, and `millimeter_t`), as well as the
-  *				literal suffixes (e.g. `10.0_B`).
-  * @param		namespaceName namespace in which the new units will be encapsulated. All literal values
-  *				are placed in the `units::literals` namespace.
-  * @param		nameSingular singular version of the unit name, e.g. 'byte'
-  * @param		namePlural - plural version of the unit name, e.g. 'bytes'
-  * @param		abbreviation - abbreviated unit name, e.g. 'B'
-  * @param		definition - the variadic parameter is used for the definition of the unit
-  *				(e.g. `unit<std::ratio<1>, units::category::data_unit>`)
-  * @note		a variadic template is used for the definition to allow templates with
-  *				commas to be easily expanded. All the variadic 'arguments' should together
-  *				comprise the unit definition.
-  */
-#define UNIT_ADD_WITH_METRIC_AND_BINARY_PREFIXES(namespaceName, nameSingular, namePlural, abbreviation, /*definition*/...)\
-	UNIT_ADD_WITH_METRIC_PREFIXES(namespaceName, nameSingular, namePlural, abbreviation, __VA_ARGS__)\
-	UNIT_ADD(namespaceName, kibi ## nameSingular, kibi ## namePlural, Ki ## abbreviation, kibi<namePlural>)\
-	UNIT_ADD(namespaceName, mebi ## nameSingular, mebi ## namePlural, Mi ## abbreviation, mebi<namePlural>)\
-	UNIT_ADD(namespaceName, gibi ## nameSingular, gibi ## namePlural, Gi ## abbreviation, gibi<namePlural>)\
-	UNIT_ADD(namespaceName, tebi ## nameSingular, tebi ## namePlural, Ti ## abbreviation, tebi<namePlural>)\
-	UNIT_ADD(namespaceName, pebi ## nameSingular, pebi ## namePlural, Pi ## abbreviation, pebi<namePlural>)\
-	UNIT_ADD(namespaceName, exbi ## nameSingular, exbi ## namePlural, Ei ## abbreviation, exbi<namePlural>)
-
 //--------------------
 //	UNITS NAMESPACE
 //--------------------
